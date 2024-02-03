@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-const type = require('./type')                         // 1st way
+const type = require('./type')                        
 const {addtodo} =  require('./type.js')   
 const {completetodo} =  require('./type.js')            
 const {addata} = require('./db.js')
@@ -18,14 +18,10 @@ app.use(express.json())
 const port =3000;
 
 app.get("/todos",async function(req,res){
-    // to find all list of databse
-    // for specific details put find({titke..something specific}) 
-    // here todo mongoose model
-    const todos = await task.find({});
+ const todos = await task.find({});
     res.json({
         todos
     })
-
 })
 
 app.post("/todo", async function(req,res){
@@ -38,8 +34,7 @@ app.post("/todo", async function(req,res){
       return
 }
     await addata(taskda.title,taskda.description,false)
-    // todo.crete({detaisl of data in obj form})
-    res.send("data is added succesfully")
+       res.send("data is added succesfully")
 })
 
 app.put("/completed",async function(req,res){
@@ -53,7 +48,7 @@ app.put("/completed",async function(req,res){
         return    
 }
      await task.updateOne({
-             _id : req.body.id      // in db id is start by _
+             _id : req.body.id     
         },{completed :true})
 
         res.json({

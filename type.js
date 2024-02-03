@@ -1,5 +1,3 @@
-// free dway to deploy it on vercel for frontend
-// render for simpkle backend
 
 const z = require('zod')
 
